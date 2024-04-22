@@ -1,6 +1,6 @@
 module.exports = {
   testEnvironment: 'node',
-  collectCoverage: true,
+  //collectCoverage: true,
   collectCoverageFrom: ['src/**/*.js'],
   moduleFileExtensions: ['js', 'json'],
   transform: {
