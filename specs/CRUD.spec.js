@@ -6,10 +6,11 @@ describe ("Fail post requests", () => {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
         "userName": "string",
-        "password": "AHJwh2asda12A323ss23@adsd22237512E23221106@@"
+        "password": "AHJwh2asda12A323ss23@adsd212237512E23221106@@"
       })
     }) 
     const dataFailCreateLogin = await responseFailCreateLogin.json()
+    expect(responseFailCreateLogin.status).toBe(406)
     console.log(responseFailCreateLogin.status)
     console.log(dataFailCreateLogin)
   })
@@ -19,11 +20,12 @@ describe ("Fail post requests", () => {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
-        "userName": "AHJwh2323ss2E23221123Aadsasd2SDAsssssssa106kfgjJJ",
+        "userName": "AHJwh2323ss2E232211123Aadsasd2SDAsssssssa106kfgjJJ",
         "password": "string"
       })
     }) 
     const dataFailCreatePass = await responseFailCreatePass.json()
+    expect(responseFailCreatePass.status).toBe(400)
     console.log(responseFailCreatePass.status)
     console.log(dataFailCreatePass)
   })
@@ -38,6 +40,7 @@ describe ("Fail post requests", () => {
       })
     })
     const dataFailGenerateToken = await responseFailGenerateToken.json();
+    expect(responseFailGenerateToken.status).toBe(400)
     console.log(responseFailGenerateToken.status)
     console.log(dataFailGenerateToken)
   })
@@ -52,11 +55,12 @@ describe("Success POST requests", () => {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify ({
-        "userName": "JOhhhhgthreu37hhdju389aDAww22131sad225AdasdasdAAsdkr74djkmg",
-        "password": "IOWYfriu3g47adsAAASDAWWW2@@adasdQA812nfdjh7@@@2"
+        "userName": "JOhhhhgthreu37hhdju389aDAww2211231sad12221215AdaasdsdasdAAsdkr74djkmg",
+        "password": "IOWYfriu3g47adsAAASDAWWW2@@adas1d231QA812ssaSnasdfdjh7@@@2"
       })
     });
       const dataSuccessUserCreate = await responseSuccessUserCreate.json();
+      expect(responseSuccessUserCreate.status).toBe(201)
       console.log(responseSuccessUserCreate.status)
       console.log(dataSuccessUserCreate)
   })
@@ -66,11 +70,12 @@ describe("Success POST requests", () => {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify ({
-        "userName": "JOhhhhgthreu3ADdasdasdasdasdQW231333gkliojvgkjrejjr74djkmg",
-        "password": "IAIKWRH%*(#@^&$hvasdasdjreht89adsasd47hdju2323jjhjdh"
+        "userName": "JOhhhhgthreu3ADdasdasdasdasdQW231333gk1l3123dsiojvgkjsdarejjr74djkmg",
+        "password": "IAIKWRH%*(#@^&$hvasdasdjreht89adsas1d47h1231dsa23ddasju2323jjhjdh"
       })
     })
     const dataSuccessTokenCreate = await responseSuccessTokenCreate.json();
+    expect(responseSuccessTokenCreate.status).toBe(200)
     console.log(responseSuccessTokenCreate.status)
     console.log(dataSuccessTokenCreate)
   })
