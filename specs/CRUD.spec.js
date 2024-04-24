@@ -1,4 +1,4 @@
-describe ("Fail post requests", () => {
+describe ("Fail POST requests", () => {
   // Создание пользователя c ошибкой, логин уже используется
   it ("Fail login test", async () => {
     const responseFailCreateLogin = await fetch ('https://bookstore.demoqa.com/Account/v1/User', {
@@ -55,11 +55,18 @@ describe("Success POST requests", () => {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify ({
-        "userName": "JOhhhhgthreu37hhdju389aDAww2211231sad12221215AdaasdsdasdAAsdkr74djkmg",
-        "password": "IOWYfriu3g47adsAAASDAWWW2@@adas1d231QA812ssaSnasdfdjh7@@@2"
+        "userName": "JOhhhhgthreu37hhdju389aDAww2212111213asd21212s1ad12221215Adaasdsdasd1AAsdkr74djkmg",
+        "password": "IOWYfriu3g47adsAAASDAWWW2@@ad1as121222dsad2311QA81211ssaSnasdf1djh7@@@2"
       })
     });
       const dataSuccessUserCreate = await responseSuccessUserCreate.json();
+
+      const etalon = {
+        userID: dataSuccessUserCreate.userID,
+        username: dataSuccessUserCreate.username,
+        books: dataSuccessUserCreate.books
+      }
+      expect(dataSuccessUserCreate).toEqual(etalon)
       expect(responseSuccessUserCreate.status).toBe(201)
       console.log(responseSuccessUserCreate.status)
       console.log(dataSuccessUserCreate)
@@ -70,17 +77,22 @@ describe("Success POST requests", () => {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify ({
-        "userName": "JOhhhhgthreu3ADdasdasdasdasdQW231333gk1l3123dsiojvgkjsdarejjr74djkmg",
-        "password": "IAIKWRH%*(#@^&$hvasdasdjreht89adsas1d47h1231dsa23ddasju2323jjhjdh"
+        "userName": "JOhhhhgthreu3ADdasda1sdasdasd1QW2ads131333gk11l13232123d1siojv2gkjsdarejjr74djkmg",
+        "password": "IAIKWRH%*1(#@^&$hvasdasdjreht81adas1dsas1d11247h12321dsa223ddasju2323jjhjdh"
       })
     })
+    
     const dataSuccessTokenCreate = await responseSuccessTokenCreate.json();
+    const etalon = {token: null,
+       expires: null, 
+       status: 'Failed', 
+       result: 'User authorization failed.'
+      }
+    expect (dataSuccessTokenCreate).toEqual(etalon)
     expect(responseSuccessTokenCreate.status).toBe(200)
     console.log(responseSuccessTokenCreate.status)
     console.log(dataSuccessTokenCreate)
   })
 })
-
-
 
 
