@@ -68,7 +68,7 @@ describe ("Avtorization user in Xpanel, Authentication, Get Policy, Create User 
 
 })
  
-/*it ("Refresh token", async () => {
+it ("Refresh token", async () => {
     const {baseURL, refreshToken} = configRefreshToken;
 
     const responseRefreshTokenSuccess = await axios.post(`${baseURL}`,{
@@ -79,4 +79,4 @@ describe ("Avtorization user in Xpanel, Authentication, Get Policy, Create User 
     })
     expect(responseRefreshTokenSuccess.status).toBe(201)
     console.log(responseRefreshTokenSuccess.data.refreshToken)
-})*/
+})
